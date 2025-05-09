@@ -1,4 +1,5 @@
 #list操作
+from collections import deque, OrderedDict, Counter, UserList
 from itertools import islice, batched, chain, groupby, product, permutations, combinations
 from typing import Iterator, Any
 
@@ -92,3 +93,26 @@ print(list(_permutations))
 list07: list[int] = [1,2,3,4]
 combinations: Iterator[int] = combinations(list07,3)
 print(list(combinations))
+
+#collection中的一些方法
+#list的查询和修改很快，但是dequeue的插入和删除很快
+list08:list[int] = [1,2,3,4,5]
+_deque: deque[int] = deque(list08)
+_deque.append(6)
+_deque.appendleft(0)
+print(_deque)
+#计数
+list09:list[str] = ['a','b','c','a','c']
+counter: Counter[str] = Counter(list09)
+print(counter)
+#包装类
+class Mylist(UserList):
+    def append(self, item:Any):
+        print(f"加入列表元素：{item}")
+        super().append(item)
+        print(f"加入元素:{item}成功")
+
+mylist: Mylist[Any] = Mylist()
+mylist.append(1)
+print(mylist)
+print(mylist.__contains__(1))

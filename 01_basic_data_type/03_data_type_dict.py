@@ -1,5 +1,6 @@
 #dict操作
-from typing import Any, Iterator
+from collections import Counter, UserDict
+from typing import Any, Iterator, ChainMap
 
 _dict: dict[str,Any] = dict()
 #添加
@@ -32,3 +33,17 @@ _dict = {key:value for value in collection if 条件}
 list_demo = ['Google','Runoob', 'Taobao']
 _dict: dict[int,str] = {index:value for index,value in enumerate(list_demo)}
 print(_dict)
+#chainmap连接多个dict
+dict01  = {"name": "Runoob"}
+dict02 = {"age": 18}
+chainmap:  ChainMap = ChainMap(dict01,dict02)
+print(dict(chainmap))
+#userdcit包装类
+class MyDict(UserDict):
+    def __setitem__(self, k:str, v:Any):
+        print(f"修改或者插入键为:{k}数据为:{v}")
+        super().__setitem__(k, v)
+
+mydict: MyDict[str,Any] = MyDict()
+mydict["name"] = "Runoob"
+print(mydict)

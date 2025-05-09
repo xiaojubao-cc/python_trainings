@@ -16,8 +16,11 @@ __mod__: 求余运算
 __pow__: 乘方
 """
 import json
+import pickle
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+from enum import Enum, unique
+from typing import Any
 
 
 class Fruit(object):
@@ -198,6 +201,40 @@ abstract_pay: AbstractPayMent = WeixinPay("微信")
 if abstract_pay.verify_identity():
     abstract_pay.pay(100)
 
+#自定义异常并支持序列化
+class CustomException(Exception):
+    def __init__(self, message:str, code:int) -> None:
+        super().__init__(message)
+        self.code = code
+        self.message = message
+
+    def __str__(self):
+        return f"{self.code}>>>>>{self.message}"
+
+    def __repr__(self) -> str:
+        return f"{self.code}>>>>>{self.message}"
+
+    #控制对象序列化和反序列化
+    def __reduce__(self) -> tuple[Any,tuple[str,Any]]:
+        #这里返回需要序列化的字段
+        return self.__class__, (self.message, self.code)
+
+
+cu:Exception = CustomException(message="自定义异常", code=1000)
+#序列化
+pickled:bytes = pickle.dumps(cu)
+unpickled:CustomException =pickle.loads(pickled)
+print(repr(unpickled))
+
+#枚举
+@unique
+class Color(Enum):
+    RED = 1
+    GREEN = 2
+    BLUE = 3
+
+r = Color.RED
+print(r.name,r.value)
 
 
 

@@ -1,4 +1,7 @@
 #字符串的相关操作
+from collections import UserString
+from typing import Any
+
 _str: str = "hello world"
 #首字母大写
 print(f"首字母大写:{_str.capitalize()}")
@@ -31,3 +34,14 @@ _str: str = "1111"
 print(f"给指定字符串左填充:{_str.ljust(10,'0')}")
 print(f"给指定字符串右填充:{_str.rjust(10,'0')}")
 print(f"给指定字符串左填充0:{_str.zfill(10)}")
+
+#userString包装类
+class MyString(UserString):
+    #这里只有使用"+"拼接才会触发
+    def __add__(self, other:Any):
+        print(f"拼接字符串:{other}")
+        return super().__add__(other)
+
+mystring: MyString = MyString("hello")
+mystring += " world"
+print(mystring)
