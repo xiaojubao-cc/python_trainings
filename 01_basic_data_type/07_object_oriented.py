@@ -138,7 +138,9 @@ student_str = """[
 json_str = json.loads(student_str)
 students: list[Student] = [
     Student(
+        #类中的对象属性单独结构
         subjects=[Subject(**subj) for subj in s["subjects"]],
+        #非类属性直接结构
         **{k:v for k,v in s.items() if k != 'subjects'}
     )
     for s in json_str
@@ -204,7 +206,6 @@ if abstract_pay.verify_identity():
 #自定义异常并支持序列化
 class CustomException(Exception):
     def __init__(self, message:str, code:int) -> None:
-        super().__init__(message)
         self.code = code
         self.message = message
 

@@ -11,3 +11,4 @@ Marcus Smart|Boston Celtics|36.0|PG|22.0|6-4|220.0|Oklahoma State|3431040.0
 Jared Sullinger|Boston Celtics|7.0|C|24.0|6-9|260.0|Ohio State|2569260.0
 Stephen Curry|Golden State|12.0|PG|22.0|6-2|190.0|Louisville|1824360.0
 Stephen Curry|Golden State|12.0|PG|22.0|6-2|190.0|Louisville|1824360.0
+Stephen Curry|Golden State|12.0|PG|22.0|6-2|190.0|Louisville|1824360.0

@@ -1,7 +1,7 @@
 #list操作
 from collections import deque, OrderedDict, Counter, UserList
 from itertools import islice, batched, chain, groupby, product, permutations, combinations
-from typing import Iterator, Any
+from typing import Iterator, Any, get_origin, get_args
 
 _list: list[int] = list()
 #末尾添加指定数据
