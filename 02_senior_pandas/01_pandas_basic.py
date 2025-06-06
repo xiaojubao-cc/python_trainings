@@ -30,6 +30,8 @@ data.sort_values(by="Name",ascending=False)
 #按照标签返回值
 #返回的数据是11行
 print(data.loc[0:10])
+print(data.loc[0:2,["Name","City"]])
+print(data.loc[data["Age"] > 35])
 #返回的数据是10行
 print(data.iloc[0:10])
 #连接两个dataFrame

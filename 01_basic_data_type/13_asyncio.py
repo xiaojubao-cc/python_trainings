@@ -1,5 +1,5 @@
 #基于的时间循环和协程的单线程，适用于IO密集型任务，感觉类似于redis的多路IO复用
-#async await协程对象需要通过 await 关键字或事件循环（event loop）来 触发执行。
+#async await协程对象需要通过 await 关键字或事件循环（event loop）来触发执行。
 #网络调用
 import asyncio
 from dataclasses import dataclass

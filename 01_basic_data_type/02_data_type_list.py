@@ -1,8 +1,13 @@
 #list操作
 from collections import deque, OrderedDict, Counter, UserList
+from functools import reduce
 from itertools import islice, batched, chain, groupby, product, permutations, combinations
 from typing import Iterator, Any, get_origin, get_args
-
+'''
+python中的深拷贝和浅拷贝：
+浅拷贝仅顶层对象复制,子对象地址相同,子对象修改会导致副本和原对象一起修改(list.copy()/dict.copy())
+深拷贝:递归拷贝所有的子对象,完全隔离(copy.deep copy())
+'''
 _list: list[int] = list()
 #末尾添加指定数据
 _list.extend([1])
@@ -105,6 +110,10 @@ print(_deque)
 list09:list[str] = ['a','b','c','a','c']
 counter: Counter[str] = Counter(list09)
 print(counter)
+#reduce方法将可迭代对象中的元素依次进行lamda表达式中的操作((1+2)+3)
+list10: list[int] = [1,2,3]
+result:int = reduce(lambda x,y: x+y,list10)
+print(result)
 #包装类
 class Mylist(UserList):
     def append(self, item:Any):

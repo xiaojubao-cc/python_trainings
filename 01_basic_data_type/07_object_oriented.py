@@ -89,8 +89,8 @@ class Subject:
     name:str
     score:int
 
-
-@dataclass(frozen=True,  order=True)
+#设置slots=True节约内存和提高访问速度
+@dataclass(frozen=True,  order=True,slots=True)
 class Student(object):
     id:str
     name:str
